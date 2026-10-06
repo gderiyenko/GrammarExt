@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "AI Grammar & Rephrase for Google Translate",
+  "version": "1.0.0",
+  "description": "Supercharge Google Translate with AI-powered grammar checking and smart rephrasing using Gemini, OpenAI, DeepSeek, or local Ollama.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_ollama",
+        "enabled": true,
+        "path": "rules/rules.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "https://translate.google.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.openai.com/*",
+    "https://api.deepseek.com/*",
+    "http://localhost:11434/*",
+    "http://127.0.0.1:11434/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "AI Translator Settings",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://translate.google.com/*"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

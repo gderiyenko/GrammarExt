@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Grammar & Rephrase Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">✨</div>
+        <div class="brand-info">
+          <h1>AI Translator Assistant</h1>
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Ready</span>
+      </div>
+    </header>
+
+    <!-- Provider Selector Tabs -->
+    <section class="section">
+      <label class="section-label">Active AI Provider</label>
+      <div class="provider-tabs">
+        <button type="button" class="tab-btn active" data-provider="gemini">
+          <span class="tab-icon">💎</span>
+          <span>Gemini</span>
+        </button>
+        <button type="button" class="tab-btn" data-provider="openai">
+          <span class="tab-icon">🟢</span>
+          <span>OpenAI</span>
+        </button>
+        <button type="button" class="tab-btn" data-provider="deepseek">
+          <span class="tab-icon">🐳</span>
+          <span>DeepSeek</span>
+        </button>
+        <button type="button" class="tab-btn" data-provider="ollama">
+          <span class="tab-icon">🦙</span>
+          <span>Ollama</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Provider Configuration Panels -->
+    <!-- Gemini Config -->
+    <div class="provider-panel active" id="panel-gemini">
+      <div class="field-group">
+        <div class="field-header">
+          <label for="gemini-key">Gemini API Key</label>
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" class="helper-link">Get Free Key ↗</a>
+        </div>
+        <div class="input-wrapper">
+          <input type="password" id="gemini-key" placeholder="AIzaSy..." autocomplete="off">
+          <button type="button" class="toggle-visibility-btn" data-target="gemini-key" title="Show/Hide">👁️</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-header">
+          <label for="gemini-model">Model Name</label>
+          <span class="field-hint">Type any custom model</span>
+        </div>
+        <input type="text" id="gemini-model" placeholder="gemini-3.8-flash" class="text-input" autocomplete="off">
+      </div>
+
+      <button type="button" class="test-btn" data-provider="gemini">
+        <span class="test-btn-icon">⚡</span>
+        <span class="test-btn-text">Test Gemini Key</span>
+      </button>
+      <div class="test-result" id="test-result-gemini"></div>
+    </div>
+
+    <!-- OpenAI Config -->
+    <div class="provider-panel" id="panel-openai">
+      <div class="field-group">
+        <div class="field-header">
+          <label for="openai-key">OpenAI API Key</label>
+          <a href="https://platform.openai.com/api-keys" target="_blank" class="helper-link">Get OpenAI Key ↗</a>
+        </div>
+        <div class="input-wrapper">
+          <input type="password" id="openai-key" placeholder="sk-..." autocomplete="off">
+          <button type="button" class="toggle-visibility-btn" data-target="openai-key" title="Show/Hide">👁️</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-header">
+          <label for="openai-model">Model Name</label>
+          <span class="field-hint">Type any custom model</span>
+        </div>
+        <input type="text" id="openai-model" placeholder="gpt-4o-mini" class="text-input" autocomplete="off">
+      </div>
+
+      <button type="button" class="test-btn" data-provider="openai">
+        <span class="test-btn-icon">⚡</span>
+        <span class="test-btn-text">Test OpenAI Key</span>
+      </button>
+      <div class="test-result" id="test-result-openai"></div>
+    </div>
+
+    <!-- DeepSeek Config -->
+    <div class="provider-panel" id="panel-deepseek">
+      <div class="field-group">
+        <div class="field-header">
+          <label for="deepseek-key">DeepSeek API Key</label>
+          <a href="https://platform.deepseek.com/api_keys" target="_blank" class="helper-link">Get DeepSeek Key ↗</a>
+        </div>
+        <div class="input-wrapper">
+          <input type="password" id="deepseek-key" placeholder="sk-..." autocomplete="off">
+          <button type="button" class="toggle-visibility-btn" data-target="deepseek-key" title="Show/Hide">👁️</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-header">
+          <label for="deepseek-model">Model Name</label>
+          <span class="field-hint">Type any custom model</span>
+        </div>
+        <input type="text" id="deepseek-model" placeholder="deepseek-chat" class="text-input" autocomplete="off">
+      </div>
+
+      <button type="button" class="test-btn" data-provider="deepseek">
+        <span class="test-btn-icon">⚡</span>
+        <span class="test-btn-text">Test DeepSeek Key</span>
+      </button>
+      <div class="test-result" id="test-result-deepseek"></div>
+    </div>
+
+    <!-- Local Ollama Config -->
+    <div class="provider-panel" id="panel-ollama">
+      <div class="field-group">
+        <div class="field-header">
+          <label for="ollama-url">Ollama Host URL</label>
+          <span class="field-hint">Local API endpoint</span>
+        </div>
+        <input type="text" id="ollama-url" placeholder="http://localhost:11434" class="text-input" autocomplete="off">
+      </div>
+
+      <div class="field-group">
+        <div class="field-header">
+          <label for="ollama-model">Model Name</label>
+          <span class="field-hint">Type any installed model</span>
+        </div>
+        <input type="text" id="ollama-model" placeholder="llama3.2" class="text-input" autocomplete="off">
+      </div>
+
+      <button type="button" class="test-btn" data-provider="ollama">
+        <span class="test-btn-icon">⚡</span>
+        <span class="test-btn-text">Test Ollama Connection</span>
+      </button>
+      <div class="test-result" id="test-result-ollama"></div>
+    </div>
+
+    <!-- Default Preferences -->
+    <section class="section preferences-section">
+      <label class="section-label">Preferences</label>
+      <div class="field-group">
+        <label for="default-tone">Default Rephrase Style</label>
+        <select id="default-tone" class="select-input">
+          <option value="natural">🌿 Natural & Fluent</option>
+          <option value="professional">💼 Professional & Formal</option>
+          <option value="casual">💬 Casual & Friendly</option>
+          <option value="concise">⚡ Concise & Direct</option>
+          <option value="academic">🎓 Academic & Sophisticated</option>
+        </select>
+      </div>
+
+      <div class="field-group toggle-row">
+        <div class="toggle-text">
+          <label for="disable-thinking">Disable Thinking (--think=false)</label>
+          <span class="field-hint">Suppresses internal reasoning (&lt;think&gt;) for fast, direct output</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="disable-thinking" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Footer Actions -->
+    <footer class="footer">
+      <div class="save-status" id="save-status">Saved</div>
+      <button type="button" class="save-btn" id="save-btn">
+        <span>Save Settings</span>
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

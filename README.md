@@ -55,6 +55,8 @@ Enhance your writing before or during translation with one-click **Grammar Impro
    - Click **🔄 Rephrase** (or open the dropdown to pick a tone like *Professional* or *Concise*).
 4. If needed, click **Compare** in the notification banner to see what changed, or click **↩️ Undo** to revert.
 
+![Extension Demo](./img/demo_readme.gif)
+
 ---
 
 ## 📁 Project Structure
@@ -71,7 +73,7 @@ googletranslate+grammar/
 │   ├── popup.html             # Extension settings popup UI
 │   ├── popup.js               # Settings controller & API key validator
 │   └── popup.css              # Modern popup styling
-├── icons/
+├── img/
 │   ├── icon-16.png
 │   ├── icon-48.png
 │   └── icon-128.png

@@ -31,7 +31,7 @@ Supports **Google Gemini**, **OpenAI**, **DeepSeek**, and local **Ollama** model
 ---
 ## 📁 Project Structure
 ```
-googletranslate+grammar/
+root/
 ├── manifest.json              # Manifest V3 configuration
 ├── background/
 │   └── service-worker.js      # Background worker handling Gemini, OpenAI, & DeepSeek API requests
